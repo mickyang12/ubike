@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>新北市共享單車站點</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 添加viewport元素以支援響應性 -->
+    <style>
+        table {
+            width: 100%;
+            max-width: 600px; /* 設定最大寬度，根據需要調整 */
+            margin: 0 auto; /* 水平居中 */
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            white-space: nowrap; /* 避免文字自動換行 */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td.sbi {
+            background-color: lightgreen;
+        }
+
+        td.bemp {
+            background-color: lightyellow;
+        }
+
+        td.tot, td.act {
+            background-color: transparent;
+        }
+
+        /* 設定特定sna欄位的底色為淡藍色 */
+        td.sna {
+            background-color: lightblue;
+            overflow: hidden;
+            text-overflow: ellipsis; /* 超出部分顯示省略號 */
+            max-width: 200px; /* 最大列寬 */
+        }
+    </style>
+</head>
+<body>
+    <h1>新北市共享單車站點</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>sna</th>
+                <th>可借</th>
+                <th>可停</th>
+                <th>更新時間</th>
+                <th>總數</th>
+                <th>act</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 資料將以JavaScript填充到這裡 -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 使用AJAX請求獲取JSON數據
+            var xhr = new XMLHttpRequest();
+            var url = "https://data.ntpc.gov.tw/api/datasets/010e5b15-3823-4b20-b401-b1cf000550c5/json?size=10000";
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    var table = document.getElementById("data-table");
+                    var tbody = table.getElementsByTagName("tbody")[0];
+
+                    // 定義要移動到最上方的sna值
+                    var topSnaValues = [
+                        "YouBike2.0_捷運頂溪站(2號出口)",
+                        "YouBike2.0_捷運頂溪站(復興街1巷)",
+                        "YouBike2.0_捷運頂溪站(中興街)"
+                    ];
+
+                    // 遍歷JSON數據，找出"sarea"為"永和區"的資料並顯示它們
+                    for (var i = 0; i < topSnaValues.length; i++) {
+                        for (var j = 0; j < data.length; j++) {
+                            if (data[j].sna === topSnaValues[i]) {
+                                var row = tbody.insertRow();
+                                var snaCell = row.insertCell(0);
+                                var sbiCell = row.insertCell(1);
+                                var bempCell = row.insertCell(2);
+                                var mdayCell = row.insertCell(3);
+                                var totCell = row.insertCell(4);
+                                var actCell = row.insertCell(5);
+
+                                // 替換sna中的 "YouBike2.0_"
+                                var snaValue = data[j].sna.replace("YouBike2.0_", "");
+                                snaCell.innerHTML = snaValue;
+
+                                sbiCell.innerHTML = data[j].sbi;
+                                bempCell.innerHTML = data[j].bemp;
+                                // 將mday的日期時間格式改成"yyyy-MM-dd hh:mm:ss"
+                                var mdayValue = data[j].mday;
+                                var formattedMday = formatMday(mdayValue);
+                                mdayCell.innerHTML = formattedMday;
+                                // 修改tot為總數
+                                totCell.innerHTML = data[j].tot;
+                                actCell.innerHTML = data[j].act;
+
+                                // 設定特定"sna"欄位的底色為淡藍色
+                                snaCell.classList.add("sna");
+                            }
+                        }
+                    }
+
+                    // 再次遍歷JSON數據，找出"sna"為"永和區"但不在topSnaValues中的資料並顯示它們
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].sarea === "板橋區" && !topSnaValues.includes(data[i].sna)) {
+                            var row = tbody.insertRow();
+                            var snaCell = row.insertCell(0);
+                            var sbiCell = row.insertCell(1);
+                            var bempCell = row.insertCell(2);
+                            var mdayCell = row.insertCell(3);
+                            var totCell = row.insertCell(4);
+                            var actCell = row.insertCell(5);
+
+                            // 替換sna中的 "YouBike2.0_"
+                            var snaValue = data[i].sna.replace("YouBike2.0_", "");
+                            snaCell.innerHTML = snaValue;
+
+                            sbiCell.innerHTML = data[i].sbi;
+                            bempCell.innerHTML = data[i].bemp;
+                            // 將mday的日期時間格式改成"yyyy-MM-dd hh:mm:ss"
+                            var mdayValue = data[i].mday;
+                            var formattedMday = formatMday(mdayValue);
+                            mdayCell.innerHTML = formattedMday;
+                            // 修改tot為總數
+                            totCell.innerHTML = data[i].tot;
+                            actCell.innerHTML = data[i].act;
+                        }
+                    }
+                }
+            };
+            xhr.send();
+
+            // 函數用於將mday的日期時間格式改成"yyyy-MM-dd hh:mm:ss"
+            function formatMday(mday) {
+                var year = mday.substring(0, 4);
+                var month = mday.substring(4, 6);
+                var day = mday.substring(6, 8);
+                var hour = mday.substring(8, 10);
+                var minute = mday.substring(10, 12);
+                var second = mday.substring(12, 14);
+
+                return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+            }
+        });
+    </script>
+</body>
+</html>
