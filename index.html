@@ -1,20 +1,20 @@
 <!-- 
-²Ä 82 ¦Ü 85 ¦C³oÃä¥i¥H¦Û¦æ¥[¤W¦Û¤v³ßÅwªº¯¸¦W¡A³o¼Ë´N·|¦C¦bªí®æ³Ì¤W¤è¡C
-°O±o«e­±­n¥[¤W ¡uYouBike2.0_¡v
+ç¬¬ 82 è‡³ 85 åˆ—é€™é‚Šå¯ä»¥è‡ªè¡ŒåŠ ä¸Šè‡ªå·±å–œæ­¡çš„ç«™åï¼Œé€™æ¨£å°±æœƒåˆ—åœ¨è¡¨æ ¼æœ€ä¸Šæ–¹ã€‚
+è¨˜å¾—å‰é¢è¦åŠ ä¸Š ã€ŒYouBike2.0_ã€
 
-²Ä124¦Cªº¦a¤è¡A¦³­ÓªO¾ô°Ï¡A¥i¥H§ï¦¨¦Û¤v¤ñ¸û·Q¬İªº¦a°Ï°Ï¦W¡C
+ç¬¬124åˆ—çš„åœ°æ–¹ï¼Œæœ‰å€‹æ¿æ©‹å€ï¼Œå¯ä»¥æ”¹æˆè‡ªå·±æ¯”è¼ƒæƒ³çœ‹çš„åœ°å€å€åã€‚
 -->
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>·s¥_¥«¦@¨É³æ¨®¯¸ÂI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- ²K¥[viewport¤¸¯À¥H¤ä´©ÅTÀ³©Ê -->
+    <title>æ–°åŒ—å¸‚å…±äº«å–®è»Šç«™é»</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- æ·»åŠ viewportå…ƒç´ ä»¥æ”¯æ´éŸ¿æ‡‰æ€§ -->
     <style>
         table {
             width: 100%;
-            max-width: 600px; /* ³]©w³Ì¤j¼e«×¡A®Ú¾Ú»İ­n½Õ¾ã */
-            margin: 0 auto; /* ¤ô¥­©~¤¤ */
+            max-width: 600px; /* è¨­å®šæœ€å¤§å¯¬åº¦ï¼Œæ ¹æ“šéœ€è¦èª¿æ•´ */
+            margin: 0 auto; /* æ°´å¹³å±…ä¸­ */
             border-collapse: collapse;
         }
 
@@ -22,7 +22,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
-            white-space: nowrap; /* Á×§K¤å¦r¦Û°Ê´«¦æ */
+            white-space: nowrap; /* é¿å…æ–‡å­—è‡ªå‹•æ›è¡Œ */
         }
 
         th {
@@ -41,36 +41,36 @@
             background-color: transparent;
         }
 
-        /* ³]©w¯S©wsnaÄæ¦ìªº©³¦â¬°²HÂÅ¦â */
+        /* è¨­å®šç‰¹å®šsnaæ¬„ä½çš„åº•è‰²ç‚ºæ·¡è—è‰² */
         td.sna {
             background-color: lightblue;
             overflow: hidden;
-            text-overflow: ellipsis; /* ¶W¥X³¡¤ÀÅã¥Ü¬Ù²¤¸¹ */
-            max-width: 200px; /* ³Ì¤j¦C¼e */
+            text-overflow: ellipsis; /* è¶…å‡ºéƒ¨åˆ†é¡¯ç¤ºçœç•¥è™Ÿ */
+            max-width: 200px; /* æœ€å¤§åˆ—å¯¬ */
         }
     </style>
 </head>
 <body>
-    <h1>·s¥_¥«¦@¨É³æ¨®¯¸ÂI</h1>
+    <h1>æ–°åŒ—å¸‚å…±äº«å–®è»Šç«™é»</h1>
     <table id="data-table">
         <thead>
             <tr>
-                <th>¯¸¦W</th>
-                <th>¥i­É</th>
-                <th>¥i°±</th>
-                <th>§ó·s®É¶¡</th>
-                <th>Á`¼Æ</th>
+                <th>ç«™å</th>
+                <th>å¯å€Ÿ</th>
+                <th>å¯åœ</th>
+                <th>æ›´æ–°æ™‚é–“</th>
+                <th>ç¸½æ•¸</th>
                 <th>act</th>
             </tr>
         </thead>
         <tbody>
-            <!-- ¸ê®Æ±N¥HJavaScript¶ñ¥R¨ì³o¸Ì -->
+            <!-- è³‡æ–™å°‡ä»¥JavaScriptå¡«å……åˆ°é€™è£¡ -->
         </tbody>
     </table>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // ¨Ï¥ÎAJAX½Ğ¨DÀò¨úJSON¼Æ¾Ú
+            // ä½¿ç”¨AJAXè«‹æ±‚ç²å–JSONæ•¸æ“š
             var xhr = new XMLHttpRequest();
             var url = "https://data.ntpc.gov.tw/api/datasets/010e5b15-3823-4b20-b401-b1cf000550c5/json?size=10000";
             xhr.open("GET", url, true);
@@ -80,14 +80,14 @@
                     var table = document.getElementById("data-table");
                     var tbody = table.getElementsByTagName("tbody")[0];
 
-                    // ©w¸q­n²¾°Ê¨ì³Ì¤W¤èªºsna­È
+                    // å®šç¾©è¦ç§»å‹•åˆ°æœ€ä¸Šæ–¹çš„snaå€¼
                     var topSnaValues = [
-                        "YouBike2.0_±¶¹B³»·Ë¯¸(2¸¹¥X¤f)",
-                        "YouBike2.0_±¶¹B³»·Ë¯¸(´_¿³µó1«Ñ)",
-                        "YouBike2.0_·s¥_¥«ÃÀ¤å¤¤¤ß(¤å¤Æ¸ô¤G¬q124«Ñ)"
+                        "YouBike2.0_æ·é‹é ‚æºªç«™(2è™Ÿå‡ºå£)",
+                        "YouBike2.0_æ·é‹é ‚æºªç«™(å¾©èˆˆè¡—1å··)",
+                        "YouBike2.0_æ–°åŒ—å¸‚è—æ–‡ä¸­å¿ƒ(æ–‡åŒ–è·¯äºŒæ®µ124å··)"
                     ];
 
-                    // ¹M¾úJSON¼Æ¾Ú¡A§ä¥X"sarea"¬°"¥Ã©M°Ï"ªº¸ê®Æ¨ÃÅã¥Ü¥¦­Ì
+                    // éæ­·JSONæ•¸æ“šï¼Œæ‰¾å‡º"sarea"ç‚º"æ°¸å’Œå€"çš„è³‡æ–™ä¸¦é¡¯ç¤ºå®ƒå€‘
                     for (var i = 0; i < topSnaValues.length; i++) {
                         for (var j = 0; j < data.length; j++) {
                             if (data[j].sna === topSnaValues[i]) {
@@ -99,29 +99,29 @@
                                 var totCell = row.insertCell(4);
                                 var actCell = row.insertCell(5);
 
-                                // ´À´«sna¤¤ªº "YouBike2.0_"
+                                // æ›¿æ›snaä¸­çš„ "YouBike2.0_"
                                 var snaValue = data[j].sna.replace("YouBike2.0_", "");
                                 snaCell.innerHTML = snaValue;
 
                                 sbiCell.innerHTML = data[j].sbi;
                                 bempCell.innerHTML = data[j].bemp;
-                                // ±Nmdayªº¤é´Á®É¶¡®æ¦¡§ï¦¨"yyyy-MM-dd hh:mm:ss"
+                                // å°‡mdayçš„æ—¥æœŸæ™‚é–“æ ¼å¼æ”¹æˆ"yyyy-MM-dd hh:mm:ss"
                                 var mdayValue = data[j].mday;
                                 var formattedMday = formatMday(mdayValue);
                                 mdayCell.innerHTML = formattedMday;
-                                // ­×§ïtot¬°Á`¼Æ
+                                // ä¿®æ”¹totç‚ºç¸½æ•¸
                                 totCell.innerHTML = data[j].tot;
                                 actCell.innerHTML = data[j].act;
 
-                                // ³]©w¯S©w"sna"Äæ¦ìªº©³¦â¬°²HÂÅ¦â
+                                // è¨­å®šç‰¹å®š"sna"æ¬„ä½çš„åº•è‰²ç‚ºæ·¡è—è‰²
                                 snaCell.classList.add("sna");
                             }
                         }
                     }
 
-                    // ¦A¦¸¹M¾úJSON¼Æ¾Ú¡A§ä¥X"sna"¬°"ªO¾ô°Ï"¦ı¤£¦btopSnaValues¤¤ªº¸ê®Æ¨ÃÅã¥Ü¥¦­Ì
+                    // å†æ¬¡éæ­·JSONæ•¸æ“šï¼Œæ‰¾å‡º"sna"ç‚º"æ¿æ©‹å€"ä½†ä¸åœ¨topSnaValuesä¸­çš„è³‡æ–™ä¸¦é¡¯ç¤ºå®ƒå€‘
                     for (var i = 0; i < data.length; i++) {
-                        if (data[i].sarea === "ªO¾ô°Ï" && !topSnaValues.includes(data[i].sna)) {
+                        if (data[i].sarea === "æ¿æ©‹å€" && !topSnaValues.includes(data[i].sna)) {
                             var row = tbody.insertRow();
                             var snaCell = row.insertCell(0);
                             var sbiCell = row.insertCell(1);
@@ -130,17 +130,17 @@
                             var totCell = row.insertCell(4);
                             var actCell = row.insertCell(5);
 
-                            // ´À´«sna¤¤ªº "YouBike2.0_"
+                            // æ›¿æ›snaä¸­çš„ "YouBike2.0_"
                             var snaValue = data[i].sna.replace("YouBike2.0_", "");
                             snaCell.innerHTML = snaValue;
 
                             sbiCell.innerHTML = data[i].sbi;
                             bempCell.innerHTML = data[i].bemp;
-                            // ±Nmdayªº¤é´Á®É¶¡®æ¦¡§ï¦¨"yyyy-MM-dd hh:mm:ss"
+                            // å°‡mdayçš„æ—¥æœŸæ™‚é–“æ ¼å¼æ”¹æˆ"yyyy-MM-dd hh:mm:ss"
                             var mdayValue = data[i].mday;
                             var formattedMday = formatMday(mdayValue);
                             mdayCell.innerHTML = formattedMday;
-                            // ­×§ïtot¬°Á`¼Æ
+                            // ä¿®æ”¹totç‚ºç¸½æ•¸
                             totCell.innerHTML = data[i].tot;
                             actCell.innerHTML = data[i].act;
                         }
@@ -149,7 +149,7 @@
             };
             xhr.send();
 
-            // ¨ç¼Æ¥Î©ó±Nmdayªº¤é´Á®É¶¡®æ¦¡§ï¦¨"yyyy-MM-dd hh:mm:ss"
+            // å‡½æ•¸ç”¨æ–¼å°‡mdayçš„æ—¥æœŸæ™‚é–“æ ¼å¼æ”¹æˆ"yyyy-MM-dd hh:mm:ss"
             function formatMday(mday) {
                 var year = mday.substring(0, 4);
                 var month = mday.substring(4, 6);
